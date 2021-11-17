@@ -1,6 +1,6 @@
 {
   "name": "chrome-pdf-printer",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Print webpage as PDF via headless Chrome.",
   "main": "./bin/index.js",
   "bin": {
