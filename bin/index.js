@@ -3,14 +3,14 @@ const yargs = require("yargs/yargs")(process.argv.slice(2));
 const ChromePDFPrinter = require("../index");
 
 const options = yargs
-  .usage("\nUsage: $0 [options] --url <webpage_url> --pdf </path/to/pdf/filename.pdf>")
+  .usage("\nUsage: $0 [options] --url <webpage_url> --save </path/to/pdf/filename.pdf>")
   .example("$0 --url http://baidu.com --pdf test.pdf")
   .options({
     url: {
-      description: "Webpage URL to print as PDF.",
+      description: "The Webpage URL to print as a PDF.",
       demand: true,
     },
-    pdf: {
+    save: {
       description: "The generated PDF file to save as.",
       demand: true,
     },
@@ -76,7 +76,7 @@ const options = yargs
   })
   .help(true).argv;
 
-// the parsed data is stored in options.
+// the parsed argv is stored in options.
 // console.dir(options);
 
 (async () => {

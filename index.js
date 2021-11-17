@@ -76,9 +76,12 @@ class ChromePDFPrinter {
       pdf: this.options.pdf,
       host: this.options.host || undefined,
       port: this.options.port || undefined,
-      chromePath: this.options.chromePath || "",
       chromeFlags: this.options.chromeFlags || DEFAULT_CHROME_FLAGS,
       printOptions: printOptions,
+      // completionTrigger: new htmlPdf.CompletionTrigger.Variable(
+      //   "htmlPdfDone", // optional, name of the variable to wait for.  Defaults to 'htmlPdfDone'
+      //   15000 // optional, timeout (milliseconds)
+      // ),
       completionTrigger: new htmlPdf.CompletionTrigger.Timer(20000),
     };
   }
