@@ -1,6 +1,4 @@
 const htmlPdf = require("html-pdf-chrome");
-const fs = require("fs");
-const net = require("net");
 
 const DEFAULT_CHROME_FLAGS = [
   "--disable-gpu",
@@ -76,40 +74,23 @@ class ChromePDFPrinter {
     return {
       url: this.options.url,
       pdf: this.options.pdf,
-      host: this.options.host || "localhost",
-      port: this.options.port,
+      host: this.options.host || undefined,
+      port: this.options.port || undefined,
       chromePath: this.options.chromePath || "",
       chromeFlags: this.options.chromeFlags || DEFAULT_CHROME_FLAGS,
       printOptions: printOptions,
+      completionTrigger: new htmlPdf.CompletionTrigger.Timer(20000),
     };
   }
 
   static async printPDF(url, filename, options) {
     const printer = new ChromePDFPrinter(options);
     const htmlPdfOptions = printer.buildHtmlPdfChromeOptions();
-    if (!htmlPdfOptions.port) {
-      htmlPdfOptions.port = await printer.getAFreePort();
-    }
     const pdf = await htmlPdf.create(url, htmlPdfOptions);
-    pdf.toFile(filename);
+    await pdf.toFile(filename);
+    console.log(`Saved ${filename}`);
   }
 
-  getAFreePort() {
-    return new Promise((resolve) => {
-      let port = Math.floor(Math.random() * 30000) + 30000;
-      const server = net.createServer({ allowHalfOpen: true });
-      server.on("listening", () => {
-        server.close(() => {
-          resolve(port);
-        });
-      });
-      server.on("error", () => {
-        port = Math.floor(Math.random() * 30000) + 30000;
-        server.listen(port);
-      });
-      server.listen(port);
-    });
-  }
 }
 
 module.exports = ChromePDFPrinter;
