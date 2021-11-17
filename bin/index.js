@@ -3,7 +3,7 @@ const yargs = require("yargs/yargs")(process.argv.slice(2));
 const ChromePDFPrinter = require("../index");
 
 const options = yargs
-  .usage("\nUsage: $0 [options] --url <webpage_url> --pdf <pdf_file>")
+  .usage("\nUsage: $0 [options] --url <webpage_url> --pdf </path/to/pdf/filename.pdf>")
   .example("$0 --url http://baidu.com --pdf test.pdf")
   .options({
     url: {
@@ -22,48 +22,52 @@ const options = yargs
       description: "The Chrome port to connect to.",
     },
     landscape: {
-      description: "landscape.",
+      description: "Paper orientation. Defaults to false.",
       boolean: true,
     },
     printBackground: {
-      description: "printBackground.",
+      description: "Print background graphics. Defaults to false.",
       boolean: true,
     },
     marginTop: {
-      description: "marginTop.",
+      description: "Top margin in inches. Defaults to 1cm (~0.4 inches).",
     },
     marginBottom: {
-      description: "marginBottom.",
+      description: "Bottom margin in inches. Defaults to 1cm (~0.4 inches).",
     },
     marginLeft: {
-      description: "marginLeft.",
+      description: "Left margin in inches. Defaults to 1cm (~0.4 inches).",
     },
     marginRight: {
-      description: "marginRight.",
+      description: "Right margin in inches. Defaults to 1cm (~0.4 inches).",
     },
     paperWidth: {
-      description: "paperWidth.",
+      description: "Paper width in inches. Defaults to 8.5 inches.",
     },
     paperHeight: {
-      description: "paperHeight.",
+      description: "Paper height in inches. Defaults to 11 inches.",
     },
     pageRanges: {
-      description: "pageRanges.",
+      description:
+        "Paper ranges to print, e.g., '1-5, 8, 11-13'. Defaults to the empty string, which means print all pages.",
+      type: "string",
     },
     displayHeaderFooter: {
-      description: "displayHeaderFooter.",
+      description: "Display header and footer. Defaults to false.",
       boolean: true,
     },
     headerTemplate: {
-      description: "headerTemplate.",
+      description:
+        "HTML template for the print header. Should be valid HTML markup with following classes used to inject printing values into them: date, title, url, pageNumber, totalPages. For example, `<span class=title></span>` would generate span containing the title.",
       type: "string",
     },
     footerTemplate: {
-      description: "footerTemplate.",
+      description:
+        "HTML template for the print footer. Should use the same format as the headerTemplate.",
       type: "string",
     },
     scale: {
-      description: "scale. 0.1 ~ 2",
+      description: "Scale of the webpage rendering. Defaults to 1.",
     },
     chromeFlags: {
       description: "chrome flags.",
