@@ -19,8 +19,8 @@ In [html-pdf-chrome](https://github.com/westy92/html-pdf-chrome), there are a fe
 `Timer`, `Element`, `Variable` are supported in this project. The related command options are:
 
 ```bash
---printTrigger           # timer, element or varialbe
---triggerTimeout         # milliseconds to wait for. Only effective for type Timer. Defaults to 10000ms.
+--printTrigger           # timer, element or variable
+--triggerTimeout         # Milliseconds to wait for. Only effective for type Timer. Defaults to 10000ms.
 --triggerElement         # Name of the DOM element to wait for, like 'div#myElement'. Only effective for type Element. Defaults to '#htmlPdfDone'.
 --triggerVariable        # Name of the variable to wait for. Only effective for type Variable. Defaults to 'htmlPdfDone'.
 ```
