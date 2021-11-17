@@ -78,11 +78,7 @@ class ChromePDFPrinter {
       port: this.options.port || undefined,
       chromeFlags: this.options.chromeFlags || DEFAULT_CHROME_FLAGS,
       printOptions: printOptions,
-      // completionTrigger: new htmlPdf.CompletionTrigger.Variable(
-      //   "htmlPdfDone", // optional, name of the variable to wait for.  Defaults to 'htmlPdfDone'
-      //   15000 // optional, timeout (milliseconds)
-      // ),
-      completionTrigger: new htmlPdf.CompletionTrigger.Timer(20000),
+      completionTrigger: this.buildPDFPrintingTrigger(),
     };
   }
 
@@ -92,6 +88,33 @@ class ChromePDFPrinter {
     const pdf = await htmlPdf.create(url, htmlPdfOptions);
     await pdf.toFile(filename);
     console.log(`Saved ${filename}`);
+  }
+
+  buildPDFPrintingTrigger() {
+    if (!this.options.printTrigger) {
+      this.options.printTrigger = "timer";
+    }
+    let completionTrigger;
+    switch (this.options.printTrigger) {
+      case "timer":
+        completionTrigger = new htmlPdf.CompletionTrigger.Timer(this.options.triggerTimeout || 10000);
+        break;
+      case "variable":
+        completionTrigger = new htmlPdf.CompletionTrigger.Variable(
+          this.options.triggerVariable || "htmlPdfDone", // name of the variable to wait for
+          7000 // optional, timeout (milliseconds)
+        );
+        break;
+      case "element":
+        completionTrigger = new htmlPdf.CompletionTrigger.Element( // TODO receive element from options "triggerElement"
+          this.options.triggerElement || "#htmlPdfDone", // name of the DOM element to wait for
+          7000 // optional, timeout (milliseconds)
+        );
+        break;
+      default:
+        break;
+    }
+    return completionTrigger;
   }
 
 }

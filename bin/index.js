@@ -21,6 +21,19 @@ const options = yargs
     port: {
       description: "The Chrome port to connect to.",
     },
+    printTrigger: {
+      description:
+        "Trigger type that wait for something to occur before triggering PDF printing. Options: timer, variable, element.",
+    },
+    triggerTimeout: {
+      description: "milliseconds to wait for",
+    },
+    triggerVariable: {
+      description: "Name of the variable to wait for. Defaults to 'htmlPdfDone'.",
+    },
+    triggerElement: {
+      description: "Name of the DOM element to wait for. For example, 'div#myElement'. Defaults to '#htmlPdfDone'.",
+    },
     landscape: {
       description: "Paper orientation. Defaults to false.",
       boolean: true,
@@ -62,8 +75,7 @@ const options = yargs
       type: "string",
     },
     footerTemplate: {
-      description:
-        "HTML template for the print footer. Should use the same format as the headerTemplate.",
+      description: "HTML template for the print footer. Should use the same format as the headerTemplate.",
       type: "string",
     },
     scale: {
@@ -81,7 +93,7 @@ const options = yargs
 
 (async () => {
   try {
-    await ChromePDFPrinter.printPDF(options.url, options.pdf, options);
+    await ChromePDFPrinter.printPDF(options.url, options.save, options);
   } catch (e) {
     console.error(e);
     process.exit(1);
