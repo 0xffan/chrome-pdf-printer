@@ -1,18 +1,36 @@
 {
-  "name": "chrome-pdf-renderer",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "chrome-pdf-printer",
+  "version": "0.1.0",
+  "description": "Print webpage as PDF via headless Chrome.",
+  "main": "./bin/index.js",
   "bin": {
     "chrome-pdf-printer": "./bin/index.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Weijun Fan <weijun.xfan@gmail.com>",
+  "author": "X.F. <weijun.fan@outlook.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/0xfwj/chrome-pdf-printer"
+  },
+  "keywords": [
+    "html",
+    "pdf",
+    "pdf-generation",
+    "html-pdf",
+    "chrome",
+    "chromium",
+    "headless",
+    "nodejs"
+  ],
   "dependencies": {
     "html-pdf-chrome": "^0.7.1",
     "yargs": "^17.2.1"
-  }
+  },
+  "files": [
+    "bin/",
+    "src/"
+  ]
 }

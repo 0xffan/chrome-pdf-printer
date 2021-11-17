@@ -1,6 +1,6 @@
 #! /usr/bin/env node
 const yargs = require("yargs/yargs")(process.argv.slice(2));
-const ChromePDFPrinter = require("../index");
+const ChromePDFPrinter = require("../src/index");
 
 const options = yargs
   .usage("\nUsage: $0 [options] --url <webpage_url> --save </path/to/pdf/filename.pdf>")
