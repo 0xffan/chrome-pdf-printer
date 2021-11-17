@@ -97,7 +97,9 @@ class ChromePDFPrinter {
     let completionTrigger;
     switch (this.options.printTrigger) {
       case "timer":
-        completionTrigger = new htmlPdf.CompletionTrigger.Timer(this.options.triggerTimeout || 10000);
+        completionTrigger = new htmlPdf.CompletionTrigger.Timer(
+          this.options.triggerTimeout || 7000
+        );
         break;
       case "variable":
         completionTrigger = new htmlPdf.CompletionTrigger.Variable(
