@@ -1,6 +1,6 @@
 # chrome-pdf-printer
 
-![NPM](https://img.shields.io/npm/l/chrome-pdf-printer) ![npm](https://img.shields.io/npm/v/chrome-pdf-printer)
+![NPM](https://img.shields.io/npm/l/chrome-pdf-printer?color=blue) ![npm](https://img.shields.io/npm/v/chrome-pdf-printer?color=brightgreen)
 
 Print webpage as PDF via headless Chrome. This is a cli app build with [html-pdf-chrome](https://www.npmjs.com/package/html-pdf-chrome).
 
