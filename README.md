@@ -20,7 +20,7 @@ There are a few `CompletionTrigger` types in [html-pdf-chrome](https://github.co
 
 ```bash
 --printTrigger           # Trigger type: timer, element or variable
---triggerTimeout         # Milliseconds to wait for. Only effective for type Timer. Defaults to 10000ms.
+--triggerTimeout         # Milliseconds to wait for. Only effective for type Timer. Defaults to 7000ms.
 --triggerElement         # Name of the DOM element to wait for, like 'div#myElement'. Only effective for type Element. Defaults to '#htmlPdfDone'.
 --triggerVariable        # Name of the variable to wait for. Only effective for type Variable. Defaults to 'htmlPdfDone'.
 ```
