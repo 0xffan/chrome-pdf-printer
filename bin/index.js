@@ -26,7 +26,7 @@ const options = yargs
         "Trigger type that wait for something to occur before triggering PDF printing. Options: timer, variable, element.",
     },
     triggerTimeout: {
-      description: "milliseconds to wait for",
+      description: "Milliseconds to wait for. Defaults to 7000ms.",
     },
     triggerVariable: {
       description: "Name of the variable to wait for. Defaults to 'htmlPdfDone'.",
