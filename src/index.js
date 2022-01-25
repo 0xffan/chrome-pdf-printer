@@ -104,13 +104,13 @@ class ChromePDFPrinter {
       case "variable":
         completionTrigger = new htmlPdf.CompletionTrigger.Variable(
           this.options.triggerVariable || "htmlPdfDone", // name of the variable to wait for
-          20000 // optional, timeout (milliseconds)
+          this.options.triggerWaitingTimeout || 20000 // optional, timeout (milliseconds)
         );
         break;
       case "element":
         completionTrigger = new htmlPdf.CompletionTrigger.Element( // TODO receive element from options "triggerElement"
           this.options.triggerElement || "#htmlPdfDone", // name of the DOM element to wait for
-          20000 // optional, timeout (milliseconds)
+          this.options.triggerWaitingTimeout || 20000 // optional, timeout (milliseconds)
         );
         break;
       default:
